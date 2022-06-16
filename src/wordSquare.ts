@@ -3,6 +3,7 @@ import {
   recursiveWordSelectAny,
   recursiveWordSelectSingle,
 } from './lib/squareHelper';
+import { isValidCharCount } from './lib/wordHelper';
 
 const retrieveWordList = (req: GenerateSquareReq) => {
   const { count, characters } = req;
@@ -25,11 +26,19 @@ const retrieveWordList = (req: GenerateSquareReq) => {
 };
 
 export const getWordSquare = (req: GenerateSquareReq) => {
+  const variant = req.variant && req.variant === 'any' ? 'any' : 'single';
+
   const wordList = retrieveWordList(req);
 
-  if (!wordList) return { solution: null, wordCount: 0 };
+  if (
+    !wordList ||
+    (variant === 'single' && !isValidCharCount(req.count, req.characters))
+  ) {
+    console.log('Invalid count', req.count, req.characters.length);
+    return { solution: null, wordCount: 0 };
+  }
 
-  if (req.variant && req.variant === 'single') {
+  if (variant === 'single') {
     /* All characters are used exactly one time */
     const wordSquare = recursiveWordSelectSingle({
       availableList: wordList,

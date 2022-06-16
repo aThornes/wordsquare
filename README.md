@@ -5,8 +5,8 @@ Coding Challenge - Word Square Solver
 Generates a valid word square for a give word length and character set
 
 Supports two variants:
-Single(Default) - n^2 characters must be given for n word length. Each character must be used and only used 1 time.
-Any - Characters can be used any number of times and not all characters must be used.
+Single(Default) - n^2 characters must be given for n word length. Each character must be used and only used once.
+Any - Characters can be used any number of times, and not all characters must be used.
 
 ## Dependencies
 
@@ -82,9 +82,22 @@ This program takes the following steps to improve calculation time:
 
 Note: completion time is averaged over 3 attempts (rounded to closest 10ms)
 
-| Count | Letters                                           | No check completion time (ms) | With check completion time (ms) |
-| ----- | ------------------------------------------------- | ----------------------------- | ------------------------------- |
-| 4     | eeeeddoonnnsssrv                                  | 130                           | 130                             |
-| 5     | aaaeeeefhhmoonssrrrrttttw                         | 570                           | 310                             |
-| 5     | aabbeeeeeeeehmosrrrruttvv                         | 280                           | 440                             |
-| 7     | aaaaaaaaabbeeeeeeedddddggmmlloooonnssssrrrruvvyyy | 188500                        | 9230                            |
+| Count | Character set                                     | Execution time without check (ms) | Execution time with check (ms) |
+| ----- | ------------------------------------------------- | --------------------------------- | ------------------------------ |
+| 4     | eeeeddoonnnsssrv                                  | 130                               | 130                            |
+| 5     | aaaeeeefhhmoonssrrrrttttw                         | 570                               | 310                            |
+| 5     | aabbeeeeeeeehmosrrrruttvv                         | 440                               | 280                            |
+| 6     | aaacccceeeeeeeeiillmrrrrrrssssttttuu              | 30090                             | 6373                           |
+| 7     | aaaaaaaaabbeeeeeeedddddggmmlloooonnssssrrrruvvyyy | 188500                            | 9230                           |
+
+## Future Improvements
+
+### Dictionary
+
+In its current state, a local dictionary is used in the form of text files for given word lengths. It would be beneficial to utilise an API to return all words of a given length, possibly even restricted to a character set, which is used for the calculation.
+
+The current dictionary is limited in that the maximum word length is 9 and that for larger words, a valid word square cannot be found in a reasonable time frame.
+
+### Execution Time Optimisation
+
+The execution time increases exponentially with word length. It is unlikely this can be avoided. However, there should be some room for improvements to increase efficiency. This will likely involve reducing the number of recursion loops, as well as reducing the time for each loop.

@@ -24,7 +24,7 @@ describe('Given valid values, word solutions can be generated (characters can be
     const count = 4;
     const characters = 'eeeeddoonnnsssrv';
 
-    const { solution } = getWordSquare({ count, characters });
+    const { solution } = getWordSquare({ count, characters, variant: 'any' });
 
     expect(solution).not.toBeNull();
     if (!solution) return; // Early return to appease typescript
@@ -36,7 +36,7 @@ describe('Given valid values, word solutions can be generated (characters can be
     const count = 4;
     const characters = 'aaccdeeeemmnnnoo';
 
-    const { solution } = getWordSquare({ count, characters });
+    const { solution } = getWordSquare({ count, characters, variant: 'any' });
 
     expect(solution).not.toBeNull();
     if (!solution) return; // Early return to appease typescript
@@ -48,7 +48,7 @@ describe('Given valid values, word solutions can be generated (characters can be
     const count = 5;
     const characters = 'aaaeeeefhhmoonssrrrrttttw';
 
-    const { solution } = getWordSquare({ count, characters });
+    const { solution } = getWordSquare({ count, characters, variant: 'any' });
 
     expect(solution).not.toBeNull();
     if (!solution) return; // Early return to appease typescript
@@ -60,7 +60,7 @@ describe('Given valid values, word solutions can be generated (characters can be
     const count = 5;
     const characters = 'aabbeeeeeeeehmosrrrruttvv';
 
-    const { solution } = getWordSquare({ count, characters });
+    const { solution } = getWordSquare({ count, characters, variant: 'any' });
 
     expect(solution).not.toBeNull();
     if (!solution) return; // Early return to appease typescript
@@ -72,7 +72,7 @@ describe('Given valid values, word solutions can be generated (characters can be
     const count = 7;
     const characters = 'aaaaaaaaabbeeeeeeedddddggmmlloooonnssssrrrruvvyyy';
 
-    const { solution } = getWordSquare({ count, characters });
+    const { solution } = getWordSquare({ count, characters, variant: 'any' });
 
     expect(solution).not.toBeNull();
     if (!solution) return; // Early return to appease typescript
@@ -191,13 +191,13 @@ describe('Given valid values, word solutions can be generated (characters are on
     expect(doArraysMatch(solution, expectedSolution)).toBe(true);
   });
 
-  it('Passes the 6 character words test - aaacccceeeeeeeeiillmrrrrrrssssttttuuu', () => {
+  it('Passes the 6 character words test - aaacccceeeeeeeeiillmrrrrrrssssttttuu', () => {
     const count = 6;
-    const characters = 'aaacccceeeeeeeeiillmrrrrrrssssttttuuu';
+    const characters = 'aaacccceeeeeeeeiillmrrrrrrssssttttuu';
 
     const expectedSolution = [
       'circle',
-      'icaurus',
+      'icarus',
       'rarest',
       'create',
       'lustre',

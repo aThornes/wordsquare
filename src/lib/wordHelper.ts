@@ -10,6 +10,11 @@ import { readJSONFile } from './fileHelper';
 const invalidTwoChar = readJSONFile('invalidTwoChar');
 const invalidThreeChar = readJSONFile('invalidThreeChar');
 
+export const isValidCharCount = (count: number, characters: string) => {
+  const nSquared = count * count;
+  return nSquared === characters.length;
+};
+
 export const containsValidCharacters = (
   word: string,
   characters: string | null,

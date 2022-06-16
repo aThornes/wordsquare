@@ -15,6 +15,8 @@ export const getCommandLineInput = (): CommandLineArgsRes => {
         break;
       case '-c':
       case '--characters':
+      case '-l':
+      case '--letters':
         characters = process.argv[i + 1];
         break;
       case '-a':
