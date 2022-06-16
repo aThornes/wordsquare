@@ -80,7 +80,7 @@ This program takes the following steps to improve calculation time:
 
 ### Vertical axis check
 
-Note: completion time is averages over 3 attempts (rounded to closest 10ms)
+Note: completion time is averaged over 3 attempts (rounded to closest 10ms)
 
 | Count | Letters                                           | No check completion time (ms) | With check completion time (ms) |
 | ----- | ------------------------------------------------- | ----------------------------- | ------------------------------- |

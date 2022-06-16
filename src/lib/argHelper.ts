@@ -11,7 +11,7 @@ export const getCommandLineInput = (): CommandLineArgsRes => {
         return { count: -1, characters: '', help: true };
       case '-n':
       case '--number':
-        count = Number(process.argv[i + 1]) || 1;
+        count = Number(process.argv[i + 1]) || 0;
         break;
       case '-c':
       case '--characters':
@@ -20,6 +20,9 @@ export const getCommandLineInput = (): CommandLineArgsRes => {
       case '-a':
       case '--all':
         all = true;
+        break;
+      default:
+        //Ignore invalid args
         break;
     }
   });

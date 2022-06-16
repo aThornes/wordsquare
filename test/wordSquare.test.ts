@@ -170,6 +170,48 @@ describe('Given valid values, word solutions can be generated (characters are on
     expect(doArraysMatch(solution, expectedSolution)).toBe(true);
   });
 
+  it('Passes the 6 character words test - aaaaaaaaabcccdeegghhiiiiklnnoorrtttt', () => {
+    const count = 6;
+    const characters = 'aaaaaaaaabcccdeegghhiiiiklnnoorrtttt';
+
+    const expectedSolution = [
+      'aahing',
+      'abator',
+      'hakata',
+      'italic',
+      'notice',
+      'graced',
+    ];
+
+    const { solution } = getWordSquare({ count, characters });
+
+    expect(solution).not.toBeNull();
+    if (!solution) return; // Early return to appease typescript
+
+    expect(doArraysMatch(solution, expectedSolution)).toBe(true);
+  });
+
+  it('Passes the 6 character words test - aaacccceeeeeeeeiillmrrrrrrssssttttuuu', () => {
+    const count = 6;
+    const characters = 'aaacccceeeeeeeeiillmrrrrrrssssttttuuu';
+
+    const expectedSolution = [
+      'circle',
+      'icaurus',
+      'rarest',
+      'create',
+      'lustre',
+      'esteem',
+    ];
+
+    const { solution } = getWordSquare({ count, characters });
+
+    expect(solution).not.toBeNull();
+    if (!solution) return; // Early return to appease typescript
+
+    expect(doArraysMatch(solution, expectedSolution)).toBe(true);
+  });
+
   it('Passes the 7 character words test - aaaaaaaaabbeeeeeeedddddggmmlloooonnssssrrrruvvyyy', () => {
     const count = 7;
     const characters = 'aaaaaaaaabbeeeeeeedddddggmmlloooonnssssrrrruvvyyy';
