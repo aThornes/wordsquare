@@ -96,7 +96,7 @@ Note: completion time is averaged over 3 attempts (rounded to closest 10ms)
 
 In its current state, a local dictionary is used in the form of text files for given word lengths. It would be beneficial to utilise an API to return all words of a given length, possibly even restricted to a character set, which is used for the calculation.
 
-The current dictionary is limited in that the maximum word length is 9 and that for larger words, a valid word square cannot be found in a reasonable time frame.
+The current dictionary is limited in that it is non-exhaustive, the maximum word length is 9 and that for larger words, a valid word square cannot be found in a reasonable time frame.
 
 ### Execution Time Optimisation
 
