@@ -58,3 +58,13 @@ Word Square generated!
  ---------
 Done in 0.14s.
 ```
+
+## Testing
+
+Unit tests are executed via jest
+
+To run, use
+
+`yarn test`
+
+Note: Tests involving longer words may take some time to calculate (typically around 1 minute to complete all tests)
