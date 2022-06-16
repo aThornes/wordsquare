@@ -5,8 +5,9 @@ Coding Challenge - Word Square Solver
 Generates a valid word square for a give word length and character set
 
 Supports two variants:
-Single(Default) - n^2 characters must be given for n word length. Each character must be used and only used once.
-Any - Characters can be used any number of times, and not all characters must be used.
+
+- Single(Default) - n^2 characters must be given for n word length. Each character must be used and only used once.
+- Any - Characters can be used any number of times, and not all characters must be used.
 
 ## Dependencies
 
