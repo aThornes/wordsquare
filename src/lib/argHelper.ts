@@ -25,23 +25,25 @@ export const getCommandLineInput = (): CommandLineArgsRes => {
   });
 
   /* Ensure count is a valid number */
-  if (!count || count < 2 || count > 9) {
-    count &&
-      console.error(
-        'Invalid count provided. Must be a valid non-zero number between 2 & 9 inclusive',
-      );
-    return { count: -1, characters: '' };
+  if (!count || count < 3 || count > 9) {
+    let errorText;
+    if (count) {
+      errorText =
+        'Invalid count provided. Must be a valid non-zero number between 3 & 9 inclusive';
+    }
+
+    return { count: -1, characters: '', errorText };
   }
 
   /* Ensure characters are valid & if using the 'single' variant, 
       ensure there are n^2 characters to n count 
   */
   if (!characters || (!all && count * count !== characters.length)) {
-    characters &&
-      console.error(
-        'Characters must be valid characters and number n^2 where n is the word count',
-      );
-    return { count: -1, characters: '' };
+    const errorText =
+      characters &&
+      'Characters must be valid characters and number n^2 where n is the word count';
+
+    return { count: -1, characters: '', errorText };
   }
 
   return { count, characters, all };

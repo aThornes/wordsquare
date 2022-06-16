@@ -1,9 +1,15 @@
+import { readJSONFile } from './fileHelper';
+
 /**
  * Check if a word contains only characters from a set
  *
  * Number of characters is restricted to the set
  *     (e.g. set: 'end', test: 'need', result: fail since set only contains 1 'e')
  */
+
+const invalidTwoChar = readJSONFile('invalidTwoChar');
+const invalidThreeChar = readJSONFile('invalidThreeChar');
+
 export const containsValidCharacters = (
   word: string,
   characters: string | null,
@@ -48,6 +54,33 @@ export const isValidWord = (word: string, previousWords: string[]) => {
     if (word.charAt(n) !== previousWords[n].charAt(previousWords.length)) {
       return false;
     }
+  }
+
+  return true;
+};
+
+/* Check the start of each vertical word to see if combination is valid */
+export const verticalCheck = (wordArr: string[]) => {
+  const wordCount = wordArr.length;
+
+  /* Can't check for first word */
+  if (wordCount !== 2 && wordCount !== 3) return true;
+
+  const wordStart: string[] = [];
+
+  const invalidCombinations =
+    wordCount === 2 ? invalidTwoChar : invalidThreeChar;
+
+  for (let i = 0; i < wordArr[0].length; i++) {
+    let str = '';
+    for (let n = 0; n < wordCount; n++) {
+      str += wordArr[n].charAt(i);
+    }
+    wordStart.push(str);
+  }
+
+  for (let charCombination of wordStart) {
+    if (invalidCombinations.includes(charCombination)) return false;
   }
 
   return true;

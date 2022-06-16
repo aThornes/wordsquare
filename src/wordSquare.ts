@@ -10,31 +10,41 @@ const retrieveWordList = (req: GenerateSquareReq) => {
   /* Retrieve an array of words for the required word length */
   const wordList = getWordFile(count);
 
-  if (!wordList) return;
+  if (!wordList.contents) {
+    console.error(wordList.errorText);
+    return;
+  }
 
+  /* Create a regular expression from the characters provided in order 
+      to filter the word list 
+  */
   const uniqueCharacters = [...new Set(characters.split(''))].join('');
   const re = RegExp(`^[${uniqueCharacters}]*$`);
 
-  return wordList.filter((x) => x.toLowerCase().match(re));
+  return wordList.contents.filter((x) => x.toLowerCase().match(re));
 };
 
 export const getWordSquare = (req: GenerateSquareReq) => {
   const wordList = retrieveWordList(req);
 
-  if (!wordList) {
-    console.error('Failed to retrieve word list');
-    return null;
-  }
+  if (!wordList) return { solution: null, wordCount: 0 };
 
   if (req.variant && req.variant === 'single') {
     /* All characters are used exactly one time */
-    return recursiveWordSelectSingle({
+    const wordSquare = recursiveWordSelectSingle({
       availableList: wordList,
       wordIndex: 0,
       availableCharacters: req.characters,
     });
+
+    return { solution: wordSquare, wordCount: wordList.length };
   }
 
   /* Can only use given characters but not restricted on use */
-  return recursiveWordSelectAny({ availableList: wordList, wordIndex: 0 });
+  const solution = recursiveWordSelectAny({
+    availableList: wordList,
+    wordIndex: 0,
+  });
+
+  return { solution, wordCount: wordList.length };
 };

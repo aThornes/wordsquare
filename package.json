@@ -13,6 +13,7 @@
   },
   "scripts": {
     "build": "npx tsc",
+    "genInvalids": "node scripts/generateInvalidCharPrefixes.js",
     "start": "node build/main.js",
     "dev": "yarn build && yarn start",
     "test": "yarn jest"

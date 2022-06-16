@@ -1,3 +1,4 @@
+import { getRecursionHits } from './lib/squareHelper';
 import { getCommandLineInput } from './lib/argHelper';
 import { getWordSquare } from './wordSquare';
 
@@ -23,13 +24,14 @@ const displayResult = (wordSquare: string[]) => {
 };
 
 const main = () => {
-  const { count, characters, all, help } = getCommandLineInput();
+  const { count, characters, all, errorText, help } = getCommandLineInput();
 
   if (count < 0 || help) {
+    if (errorText) console.error(errorText);
     console.log(`Command usage:
     yarn start -n <number> -c <characters> {-a}
     Arguments:
-    --number|-n : Provide length of each word in the word square (between 2 & 9 inclusive)
+    --number|-n : Provide length of each word in the word square (between 3 & 9 inclusive)
     --characters|-c : Provide characters available to generate the word square
     --all : Use the 'all' variant. Characters can be used more than one time `);
 
@@ -39,14 +41,18 @@ const main = () => {
   console.log(welcomeText(count, characters));
 
   console.log('Calculating......');
-  const wordSquare = getWordSquare({
+  const { solution, wordCount } = getWordSquare({
     count,
     characters,
     variant: all ? 'any' : 'single',
   });
 
-  if (wordSquare) {
-    displayResult(wordSquare);
+  console.log('Potential words in list:', wordCount);
+
+  console.log('Recursive hits:', getRecursionHits());
+
+  if (solution) {
+    displayResult(solution);
   } else {
     console.error(
       'Failed to generate a valid Word Square from the provided input',

@@ -19,126 +19,158 @@ const doArraysMatch = (strA: string[], strB: string[]) => {
   return true;
 };
 
-describe('Given valid values, word squares can be generated (characters can be used multiple times)', () => {
-  it('Passes the 4 word test - eeeeddoonnnsssrv', () => {
+describe('Given valid values, word solutions can be generated (characters can be used multiple times)', () => {
+  it('Passes the 4 character words test - eeeeddoonnnsssrv', () => {
     const count = 4;
     const characters = 'eeeeddoonnnsssrv';
 
-    const square = getWordSquare({ count, characters });
+    const { solution } = getWordSquare({ count, characters });
 
-    expect(square).not.toBeNull();
-    if (!square) return; // Early return to appease typescript
+    expect(solution).not.toBeNull();
+    if (!solution) return; // Early return to appease typescript
 
-    expect(isValidSquare(square));
+    expect(isValidSquare(solution));
   });
 
-  it('Passes the 4 word test - aaccdeeeemmnnnoo', () => {
+  it('Passes the 4 character words test - aaccdeeeemmnnnoo', () => {
     const count = 4;
     const characters = 'aaccdeeeemmnnnoo';
 
-    const square = getWordSquare({ count, characters });
+    const { solution } = getWordSquare({ count, characters });
 
-    expect(square).not.toBeNull();
-    if (!square) return; // Early return to appease typescript
+    expect(solution).not.toBeNull();
+    if (!solution) return; // Early return to appease typescript
 
-    expect(isValidSquare(square));
+    expect(isValidSquare(solution));
   });
 
-  it('Passes the 5 word test - aaaeeeefhhmoonssrrrrttttw', () => {
+  it('Passes the 5 character words test - aaaeeeefhhmoonssrrrrttttw', () => {
     const count = 5;
     const characters = 'aaaeeeefhhmoonssrrrrttttw';
 
-    const square = getWordSquare({ count, characters });
+    const { solution } = getWordSquare({ count, characters });
 
-    expect(square).not.toBeNull();
-    if (!square) return; // Early return to appease typescript
+    expect(solution).not.toBeNull();
+    if (!solution) return; // Early return to appease typescript
 
-    expect(isValidSquare(square));
+    expect(isValidSquare(solution));
   });
 
-  it('Passes the 5 word test - aabbeeeeeeeehmosrrrruttvv', () => {
+  it('Passes the 5 character words test - aabbeeeeeeeehmosrrrruttvv', () => {
     const count = 5;
     const characters = 'aabbeeeeeeeehmosrrrruttvv';
 
-    const square = getWordSquare({ count, characters });
+    const { solution } = getWordSquare({ count, characters });
 
-    expect(square).not.toBeNull();
-    if (!square) return; // Early return to appease typescript
+    expect(solution).not.toBeNull();
+    if (!solution) return; // Early return to appease typescript
 
-    expect(isValidSquare(square));
+    expect(isValidSquare(solution));
   });
 
-  it('Passes the 7 word test - aaaaaaaaabbeeeeeeedddddggmmlloooonnssssrrrruvvyyy', () => {
+  it('Passes the 7 character words test - aaaaaaaaabbeeeeeeedddddggmmlloooonnssssrrrruvvyyy', () => {
     const count = 7;
     const characters = 'aaaaaaaaabbeeeeeeedddddggmmlloooonnssssrrrruvvyyy';
 
-    const square = getWordSquare({ count, characters });
+    const { solution } = getWordSquare({ count, characters });
 
-    expect(square).not.toBeNull();
-    if (!square) return; // Early return to appease typescript
+    expect(solution).not.toBeNull();
+    if (!solution) return; // Early return to appease typescript
 
-    expect(isValidSquare(square));
+    expect(isValidSquare(solution));
   });
 });
 
-describe('Given valid values, word squares can be generated (characters are one use each)', () => {
-  it('Passes the 4 word test - eeeeddoonnnsssrv', () => {
+describe('Given valid values, word solutions can be generated (characters are one use each)', () => {
+  it('Passes the 4 character words test - eeeeddoonnnsssrv', () => {
     const count = 4;
     const characters = 'eeeeddoonnnsssrv';
 
     const expectedSolution = ['rose', 'oven', 'send', 'ends'];
 
-    const square = getWordSquare({ count, characters, variant: 'single' });
+    const { solution } = getWordSquare({
+      count,
+      characters,
+      variant: 'single',
+    });
 
-    expect(square).not.toBeNull();
-    if (!square) return; // Early return to appease typescript
+    expect(solution).not.toBeNull();
+    if (!solution) return; // Early return to appease typescript
 
-    expect(doArraysMatch(square, expectedSolution)).toBe(true);
+    expect(doArraysMatch(solution, expectedSolution)).toBe(true);
   });
 
-  it('Passes the 4 word test - aaccdeeeemmnnnoo', () => {
+  it('Passes the 4 character words test - aaccdeeeemmnnnoo', () => {
     const count = 4;
     const characters = 'aaccdeeeemmnnnoo';
 
     const expectedSolution = ['moan', 'once', 'acme', 'need'];
 
-    const square = getWordSquare({ count, characters });
+    const { solution } = getWordSquare({ count, characters });
 
-    expect(square).not.toBeNull();
-    if (!square) return; // Early return to appease typescript
+    expect(solution).not.toBeNull();
+    if (!solution) return; // Early return to appease typescript
 
-    expect(doArraysMatch(square, expectedSolution)).toBe(true);
+    expect(doArraysMatch(solution, expectedSolution)).toBe(true);
   });
 
-  it('Passes the 5 word test - aaaeeeefhhmoonssrrrrttttw', () => {
+  it('Passes the 4 character words test - aaaadddeeiimnntt', () => {
+    const count = 4;
+    const characters = 'aaaadddeeiimnntt';
+
+    const expectedSolution = ['mind', 'idea', 'neat', 'data'];
+
+    const { solution } = getWordSquare({ count, characters });
+
+    expect(solution).not.toBeNull();
+    if (!solution) return; // Early return to appease typescript
+
+    expect(doArraysMatch(solution, expectedSolution)).toBe(true);
+  });
+
+  it('Passes the 5 character words test - aaaeeeefhhmoonssrrrrttttw', () => {
     const count = 5;
     const characters = 'aaaeeeefhhmoonssrrrrttttw';
 
     const expectedSolution = ['feast', 'earth', 'armor', 'stone', 'threw'];
 
-    const square = getWordSquare({ count, characters });
+    const { solution } = getWordSquare({ count, characters });
 
-    expect(square).not.toBeNull();
-    if (!square) return; // Early return to appease typescript
+    expect(solution).not.toBeNull();
+    if (!solution) return; // Early return to appease typescript
 
-    expect(doArraysMatch(square, expectedSolution)).toBe(true);
+    expect(doArraysMatch(solution, expectedSolution)).toBe(true);
   });
 
-  it('Passes the 5 word test - aabbeeeeeeeehmosrrrruttvv', () => {
+  it('Passes the 5 character words test - aabbeeeeeeeehmosrrrruttvv', () => {
     const count = 5;
     const characters = 'aabbeeeeeeeehmosrrrruttvv';
 
     const expectedSolution = ['heart', 'ember', 'above', 'revue', 'trees'];
 
-    const square = getWordSquare({ count, characters });
+    const { solution } = getWordSquare({ count, characters });
 
-    expect(square).not.toBeNull();
-    if (!square) return; // Early return to appease typescript
+    expect(solution).not.toBeNull();
+    if (!solution) return; // Early return to appease typescript
 
-    expect(doArraysMatch(square, expectedSolution)).toBe(true);
+    expect(doArraysMatch(solution, expectedSolution)).toBe(true);
   });
 
-  it('Passes the 7 word test - aaaaaaaaabbeeeeeeedddddggmmlloooonnssssrrrruvvyyy', () => {
+  it('Passes the 5 character words test - eeeeeggiinnnnoorrssttttuu', () => {
+    const count = 5;
+    const characters = 'eeeeeggiinnnnoorrssttttuu';
+
+    const expectedSolution = ['stung', 'tenor', 'untie', 'noise', 'greet'];
+
+    const { solution } = getWordSquare({ count, characters });
+
+    expect(solution).not.toBeNull();
+    if (!solution) return; // Early return to appease typescript
+
+    expect(doArraysMatch(solution, expectedSolution)).toBe(true);
+  });
+
+  it('Passes the 7 character words test - aaaaaaaaabbeeeeeeedddddggmmlloooonnssssrrrruvvyyy', () => {
     const count = 7;
     const characters = 'aaaaaaaaabbeeeeeeedddddggmmlloooonnssssrrrruvvyyy';
 
@@ -152,11 +184,11 @@ describe('Given valid values, word squares can be generated (characters are one 
       'odyssey',
     ];
 
-    const square = getWordSquare({ count, characters });
+    const { solution } = getWordSquare({ count, characters });
 
-    expect(square).not.toBeNull();
-    if (!square) return; // Early return to appease typescript
+    expect(solution).not.toBeNull();
+    if (!solution) return; // Early return to appease typescript
 
-    expect(doArraysMatch(square, expectedSolution)).toBe(true);
+    expect(doArraysMatch(solution, expectedSolution)).toBe(true);
   });
 });

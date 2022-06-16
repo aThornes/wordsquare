@@ -68,3 +68,23 @@ To run, use
 `yarn test`
 
 Note: Tests involving longer words may take some time to calculate (typically around 1 minute to complete all tests)
+
+## Optimisation
+
+One of the tricky parts of solving word squares is making the process efficient enough to handle larger words.
+
+This program takes the following steps to improve calculation time:
+
+1. Filter dictionary to words made from letters from the initial character set
+2. Check vertical axis, discount words that create 2 letter verticals that cannot spell a valid word
+
+### Vertical axis check
+
+Note: completion time is averages over 3 attempts (rounded to closest 10ms)
+
+| Count | Letters                                           | No check completion time (ms) | With check completion time (ms) |
+| ----- | ------------------------------------------------- | ----------------------------- | ------------------------------- |
+| 4     | eeeeddoonnnsssrv                                  | 130                           | 130                             |
+| 5     | aaaeeeefhhmoonssrrrrttttw                         | 570                           | 310                             |
+| 5     | aabbeeeeeeeehmosrrrruttvv                         | 280                           | 440                             |
+| 7     | aaaaaaaaabbeeeeeeedddddggmmlloooonnssssrrrruvvyyy | 188500                        | 9230                            |

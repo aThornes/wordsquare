@@ -2,7 +2,11 @@ import {
   containsValidCharacters,
   isValidWord,
   spliceCharacters,
+  verticalCheck,
 } from './wordHelper';
+
+/* Global stastic counter */
+let recursionHits = 0;
 
 /**
  * Recursively create a valid word square using any of the characters provided
@@ -15,13 +19,18 @@ import {
 export const recursiveWordSelectAny = (
   req: WordSquareAnyReq,
 ): string[] | null => {
-  return recursiveWordSelectSingle({ ...req, availableCharacters: null });
+  return recursiveWordSelectSingle({
+    ...req,
+    availableCharacters: null,
+  });
 };
 
 export const recursiveWordSelectSingle = (
   req: WordSquareSingleReq,
 ): string[] | null => {
   const { availableList, wordIndex, availableCharacters, activeWords } = req;
+
+  recursionHits++;
 
   /**
    * Only include words that are valid for the wordsquare position
@@ -45,6 +54,9 @@ export const recursiveWordSelectSingle = (
 
   let validWordArr: string[] | null = null;
   for (let word of wordList) {
+    if (activeWords && !verticalCheck([...activeWords, word])) {
+      continue;
+    }
     const activeList = availableList.filter((x) => x !== word);
 
     /* Remove the current word's characters from characters available */
@@ -67,3 +79,5 @@ export const recursiveWordSelectSingle = (
   }
   return validWordArr;
 };
+
+export const getRecursionHits = () => recursionHits;

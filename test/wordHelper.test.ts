@@ -1,3 +1,4 @@
+import { verticalCheck } from './../src/lib/wordHelper';
 import {
   containsValidCharacters,
   spliceCharacters,
@@ -38,5 +39,13 @@ describe('Word Helper functionality tests', () => {
     const expected = 'sdmshdflj';
 
     expect(spliceCharacters(toRemove, characters)).toBe(expected);
+  });
+
+  it('Returns false for non-valid vertical words', () => {
+    const wordArr = ['jowels', 'requil'];
+
+    const resp = verticalCheck(wordArr);
+
+    expect(resp).toBe(false);
   });
 });
