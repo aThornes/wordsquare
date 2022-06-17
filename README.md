@@ -2,7 +2,7 @@
 
 Coding Challenge - Word Square Solver
 
-Generates a valid word square for a give word length and character set
+Generates a valid word square for a given word length and character set
 
 Supports two variants:
 
@@ -101,4 +101,4 @@ The current dictionary is limited in that it is non-exhaustive, the maximum word
 
 ### Execution Time Optimisation
 
-The execution time increases exponentially with word length. It is unlikely this can be avoided. However, there should be some room for improvements to increase efficiency. This will likely involve reducing the number of recursion loops, as well as reducing the time for each loop.
+The execution time increases exponentially with word length. It is unlikely this can be avoided. However, there should be some room for improvements to increase efficiency. This will involve reducing the number of recursion loops, as well as reducing the time for each loop.
