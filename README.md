@@ -88,7 +88,7 @@ Note: completion time is averaged over 3 attempts (rounded to closest 10ms)
 | 4     | eeeeddoonnnsssrv                                  | 130                               | 130                            |
 | 5     | aaaeeeefhhmoonssrrrrttttw                         | 570                               | 310                            |
 | 5     | aabbeeeeeeeehmosrrrruttvv                         | 440                               | 280                            |
-| 6     | aaacccceeeeeeeeiillmrrrrrrssssttttuu              | 30090                             | 6373                           |
+| 6     | aaacccceeeeeeeeiillmrrrrrrssssttttuu              | 30090                             | 6370                           |
 | 7     | aaaaaaaaabbeeeeeeedddddggmmlloooonnssssrrrruvvyyy | 188500                            | 9230                           |
 
 ## Future Improvements
